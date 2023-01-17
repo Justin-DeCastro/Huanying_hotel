@@ -99,6 +99,12 @@ class User extends Controller {
 	public function show_payment(){
 		$this->template('USer/payment');
 	}
+	public function show_login(){
+		$this->call->view('user/login');
+	}
+	public function show_registration(){
+		$this->call->view('user/registration');
+	}
 	
 }
 
