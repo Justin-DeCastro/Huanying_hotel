@@ -93,6 +93,46 @@ class Room_category_model extends Model {
             return false;
         }
     }
+
+    public function get_category($category_id){
+        $row = $this->db->table('tblroom_category')->where('category_id',$category_id)->get();
+        return $row;
+    }
+    public function get_room_number()
+    {               
+        $row = $this->db->table('tbl_room')->get_all();
+        return $row;
+    }
+    public function add_room_number($room_number,$availability){
+        $data=array(
+            'room_number'=>$room_number,
+            'availability'=>$availability
+
+        );
+        $this->db->table('tbl_room')->insert($data);
+        return true;
+
+}
+ public function update_room_number($room_id,$availability){
+        $data=array(
+            'room_id'=>$room_id,
+            'room_number'=>$room_number,
+            'availability'=>$availability
+           
+        );
+         $this->db->table('tbl_room')->where('room_id', $room_id)->update($data);
+        return true;
+
+    }
+    public function delete_room_number($room_id){
+        $del = $this->db->table('tbl_room')->where('room_id', $room_id)->delete();
+        if($del){
+            return true;
+
+        }else{
+            return false;
+        }
+    }
 }
 
 ?>

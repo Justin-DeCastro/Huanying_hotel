@@ -31,7 +31,7 @@ class Admin extends Controller {
 		$this->template('Admin/room_category',$data);
 	}
 	public function add_room_category(){
-		$category_name = $this->io->post('category_name');
+		$room_category = $this->io->post('room_category');
 		$availability = $this->io->post('availability');
 		$description = $this->io->post('description');
 		$status = $this->io->post('status');
@@ -199,6 +199,77 @@ class Admin extends Controller {
 
 		redirect('Admin/show_staff');
 	}
+
+	public function show_allrooms(){
+		$this->template('admin/roomnumber');
+	}
+	public function add_room_number(){
+		
+		$room_number = $this->io->post('room_number');
+		$availability = $this->io->post('availability');
+		
+
+		 $this->form_validation->name('room_number')->required();
+         if($this->form_validation->run()){
+         	$this->call->model('Admin/Room_category_model');
+         	if ($this->Room_category_model->add_room_number($room_number,$availability)==true){
+         		$_SESSION['status']="Added Successfully";
+				$_SESSION['status_code']="success";
+         	}
+         }
+         else{
+         		$_SESSION['status']="Record not saved";
+				$_SESSION['status_code']="error";
+         }
+
+
+		redirect('Admin/show_staff');
+
+}
+		public function delete_room_number($room_id){
+		$this->call->model('Admin/Room_category_model');
+		 if($this->Room_category_model->delete_room_number($room_id)){
+            $_SESSION['status']="Deleted Successfully";
+				$_SESSION['status_code']="success";
+        }else{
+            $_SESSION['status']="Student ID is required";
+			$_SESSION['status_code']="error";
+		}
+		redirect('Admin/show_staff');
+
+	}
+	public function update_room_number(){
+		$room_id = $this->io->post('room_id');
+		$room_number = $this->io->post('room_number');
+		$availability = $this->io->post('availability');
+
+		 $this->form_validation->name('room_number')->required();
+         if($this->form_validation->run()){
+         	$this->call->model('Admin/Room_category_model');
+
+         	if ($this->Room_category_model->update_staff($room_id,$room_number,$availability)==true){
+         		$_SESSION['status']="Updated Successfully";
+				$_SESSION['status_code']="success";
+				 	}
+         }
+         else{
+         		$_SESSION['status']="Record not saved";
+				$_SESSION['status_code']="error";
+         }
+
+
+		redirect('Admin/show_staff');
+	}
+	public function room_booking() {
+		$this->call->model('Admin/Room_category_model');
+	   $data = $this->Room_category_model->get_rooms();
+	   $this->template('Admin/booking',$data);
+   }
+   public function payment() {
+	$this->call->model('Admin/Room_category_model');
+   $data = $this->Room_category_model->get_rooms();
+   $this->template('Admin/payment',$data);
+}
 
 }
 ?>

@@ -49,6 +49,8 @@
                 <li><a href="#">Max Person: <span><?php echo $data['max_persons'];?></span></a></li>
                 <li><a href="#">Size <span><?php echo $data['size'];?></span></a></li>
                 <li><a href="#">Availability <span><?php echo $data['availability'];?></span></a></li>
+               
+                <p class="pt-5"><a href="<?php echo site_url('User/room_number')?>" class="btn-custom px-3 py-2 rounded"> <input type="submit" value="Book Now"></span></a></p>
               </div>
             </div>
         </div>
@@ -57,5 +59,7 @@
         <div class="col-md-12 room-single mt-4 mb-5 ftco-animate">
                 <h2 class="mb-4"><?php echo $data['category_name'];?> <span> (<?php echo $data['availability'];?> Available rooms)</span></h2>
                 <p><?php echo $data['description'];?></p>
+                <p class="pt-1">
+                
               </div>
     </section> <!-- .section -->

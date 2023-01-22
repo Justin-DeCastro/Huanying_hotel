@@ -30,7 +30,7 @@
     							<p class="mb-0"><span class="price mr-1">Php <?php echo $room['price']; ?></span> <span class="per">per day</span></p>
 	    						<h3 class="mb-3"><a href="rooms.html"><?php echo $room['category_name'];?></a></h3>
                   <h6 class="mb-3"><?php echo $room['description'];?></h6>
-	    						<p class="pt-1"><a href="<?php echo site_url('User/room_details/'.$room['category_id'])?>" class="btn-custom px-3 py-2 rounded">Book Now <span class="icon-long-arrow-right"></span></a></p>
+	    						<p class="pt-1"><a href="<?php echo site_url('User/room_details/'.$room['category_id'])?>" class="btn-custom px-3 py-2 rounded">Choose me <span class="icon-long-arrow-right"></span></a></p>
     						</div>
     					</div>
     				</div>
