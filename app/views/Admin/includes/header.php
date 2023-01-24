@@ -10,7 +10,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
   <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="./assets/img/favicon.png">
   <title>
-    Huanying Hotel Official Website
+    Argon Dashboard 2 by Creative Tim
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />

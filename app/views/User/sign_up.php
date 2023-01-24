@@ -4,18 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Form validation </title>
+  <title>Sign_up </title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
   <div class="wrapper">
-    <header>Login Form</header>
-    <form action="<?php echo site_url('Login/sign_in')?>" method="post">
+    <header>Create an Account</header>
+    <form action="<?php echo site_url('Login/register')?>" method="post">
       <div class="field email">
         <div class="input-area">
-          <input type="email" name="username" placeholder="Email Address">
+          <input type="text" name="email" placeholder="Email Address" required>
           <i class="icon fas fa-envelope"></i>
           <i class="error error-icon fas fa-exclamation-circle"></i>
         </div>
@@ -23,20 +23,29 @@
       </div>
       <div class="field password">
         <div class="input-area">
-          <input type="password" name="password" placeholder="Password">
+          <input type="password" name="password" placeholder="Password" required>
           <i class="icon fas fa-lock"></i>
           <i class="error error-icon fas fa-exclamation-circle"></i>
         </div>
         <div class="error error-txt">Password can't be blank</div>
       </div>
-      <div class="pass-txt"><a href="#">Forgot password?</a></div>
+      <div class="field password">
+        <div class="input-area">
+          <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+          <i class="icon fas fa-lock"></i>
+          <i class="error error-icon fas fa-exclamation-circle"></i>
+        </div>
+        <div class="error error-txt">Password can't be blank</div>
+      </div>
+
+
       <input type="submit" value="Login">
     </form>
-    <div class="sign-txt">Not yet member? <a href="<?php echo site_url('Login/registration')?>">Signup now</a></div>
+    <div class="sign-txt">Already have an account? <a href="<?php echo site_url('Login/sign_in')?>">Login</a></div>
   </div>
 
   <script src="script.js"></script>
-  <?php if(isset($_SESSION['status'])){ ?>
+   <?php if(isset($_SESSION['status'])){ ?>
     <script type="text/javascript">
         Swal.fire({
               position: 'top-end',
@@ -47,6 +56,7 @@
             })
     </script>
 <?php unset($_SESSION["status"]);  }?>
+
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
@@ -69,7 +79,7 @@ body{
   background: #5372F0;
 }
 .wrapper{
-  width: 380px;
+  width: 500px;
   padding: 40px 30px 50px 30px;
   background: #fff;
   border-radius: 5px;
@@ -242,6 +252,5 @@ form.onsubmit = (e)=>{
   }
 }
     </style>
-
 </body>
 </html>

@@ -2,34 +2,28 @@
 defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 class User extends Controller {
+	public function __construct(){
+		parent:: __construct();
+		}
 	
 
 	private function template($content = 'index', $data = NULL) {
 
 		
 		$this->call->view('User/includes/header', $data); // include the header, can also include sidebar or topbar
-		$this->call->view('User/includes/navbar', $data);
+		if(!is_logged_in()){
+			$this->call->view('User/includes/navbar', $data);
+		}
+		else{
+			$this->call->view('User/includes/navbar_signout', $data);
+		}
 		$this->call->view($content, $data);	// main content
 		$this->call->view('User/includes/footer', $data); // include footer, or footbar
 		$this->call->view('User/includes/loader', $data); // include footer, or footbar
 		
 	}
-	private function templates($content = 'index', $data = NULL) {
-
-		
-		$this->call->view('User/includes/header', $data); // include the header, can also include sidebar or topbar
-		// $this->call->view('User/includes/navbar', $data);
-		$this->call->view($content, $data);	// main content
-		$this->call->view('User/includes/footer', $data); // include footer, or footbar
-		// $this->call->view('User/includes/loader', $data); // include footer, or footbar
-		
-	}
 	
-	public function __construct(){
-		parent:: __construct();
-		$this->call->library('session');
-		$this->call->library('form_validation');
-	}
+	
 
 
 	public function index() {
@@ -40,9 +34,6 @@ class User extends Controller {
 		$this->call->model('Admin/Room_category_model');
 		$data = $this->Room_category_model->get_category_byId($category_id);
 		$this->template('User/room_details.php',$data);
-	}
-	public function room_number(){
-		$this->template('User/roomnumber.php');
 	}
 	
 	public function show_room(){
@@ -112,18 +103,6 @@ class User extends Controller {
 	public function show_payment(){
 		$this->template('USer/payment');
 	}
-	public function show_login(){
-		$this->call->view('user/login');
-	}
-	public function show_registration(){
-		$this->call->view('user/registration');
-	}
-	public function show_room_number(){
-			$this->call->model('Admin/Room_category_model');
-			$data = $this->Room_category_model->get_rooms();
-			$this->call->view('User/roomnumber',$data);
-			
-		}
 	
 }
 

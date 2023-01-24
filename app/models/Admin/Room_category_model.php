@@ -93,45 +93,35 @@ class Room_category_model extends Model {
             return false;
         }
     }
-
-    public function get_category($category_id){
-        $row = $this->db->table('tblroom_category')->where('category_id',$category_id)->get();
+    public function get_allrooms()
+    {    
+        $row=$this->db->table('tblrooms as t')->join('tblroom_category as f', 't.category_id=f.category_id')->get_all();           
         return $row;
     }
-    public function get_room_number()
-    {               
-        $row = $this->db->table('tbl_room')->get_all();
-        return $row;
-    }
-    public function add_room_number($room_number,$availability){
+    public function add_room($room_name,$category_id){
         $data=array(
-            'room_number'=>$room_number,
-            'availability'=>$availability
-
+            'room_name'=>$room_name,
+            'category_id'=>$category_id 
         );
-        $this->db->table('tbl_room')->insert($data);
+        $this->db->table('tblrooms')->insert($data);
         return true;
-
-}
- public function update_room_number($room_id,$availability){
-        $data=array(
-            'room_id'=>$room_id,
-            'room_number'=>$room_number,
-            'availability'=>$availability
-           
-        );
-         $this->db->table('tbl_room')->where('room_id', $room_id)->update($data);
-        return true;
-
     }
-    public function delete_room_number($room_id){
-        $del = $this->db->table('tbl_room')->where('room_id', $room_id)->delete();
+    public function delete_room($room_id){
+        $del = $this->db->table('tblrooms')->where('room_id', $room_id)->delete();
         if($del){
             return true;
 
         }else{
             return false;
         }
+    }
+    public function update_room($room_id,$room_name){
+        $data=array(
+            'room_name'=>$room_name   
+        );
+         $this->db->table('tblrooms')->where('room_id', $room_id)->update($data);
+        return true;
+
     }
 }
 

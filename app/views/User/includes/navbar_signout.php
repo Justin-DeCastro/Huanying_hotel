@@ -14,8 +14,7 @@
 	          <li class="nav-item"><a href="<?php echo site_url('User/show_blog')?>" class="nav-link">Blog</a></li>
 			  <li class="nav-item"><a href="<?php echo site_url('User/show_payment')?>" class="nav-link">Payment</a></li>
 	          <li class="nav-item"><a href="<?php echo site_url('User/show_contact')?>" class="nav-link">Contact</a></li>
-	          <li class="nav-item"><a href="<?php echo site_url('Login/sign_in')?>" class="btn btn-outline-success" style="border-radius: 30px; margin-top:8px; margin-left:60px; padding-right: 20px; padding-left: 20px; font-size: 16px;">Login</a></li>
-	          <li class="nav-item"><a href="<?php echo site_url('Login/registration')?>" class="btn btn-outline-success" style="border-radius: 30px; margin-top:8px; margin-left: 10px; padding-right: 20px; padding-left: 20px; font-size: 16px;">Sign Up</a></li>
+	          <li class="nav-item"><a href="<?php echo site_url('Login/logout')?>" class="btn btn-outline-success" style="border-radius: 30px; margin-top:8px; margin-left:60px; padding-right: 20px; padding-left: 20px; font-size: 16px;">Sign Out</a></li>
 	        </ul>
 	      </div>
 	    </div>
