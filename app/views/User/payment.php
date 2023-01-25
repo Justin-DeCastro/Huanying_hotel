@@ -9,6 +9,7 @@
 	<title>Upload Your Payment Screen Shot</title>
 </head>
 <body>
+	<?php var_dump($data);?>
     <h3><br><center>PLease Upload your Gcash Receipt here:</h3></center>
 	<div style="display:flex; justify-content: center; margin-top:10%;">
 		<form enctype="multipart/form-data" method="POST" action="" style="width: 500px;">

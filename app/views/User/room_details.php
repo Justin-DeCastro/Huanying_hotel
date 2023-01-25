@@ -53,9 +53,40 @@
             </div>
         </div>
       </div>
-
-        <div class="col-md-12 room-single mt-4 mb-5 ftco-animate">
+      
+      <div class="row">
+        <div class="col-md-8 room-single mt-4 mb-5 ftco-animate">
                 <h2 class="mb-4"><?php echo $data['category_name'];?> <span> (<?php echo $data['availability'];?> Available rooms)</span></h2>
                 <p><?php echo $data['description'];?></p>
+        </div>
+        <div class="col-md-4 room-single mt-4 mb-5 ftco-animate">
+            <div class="card card-shadow">
+              <div class="card-header bg-info">
+                <h4 class="text-center text-white mt-1">Reserve Your Room</h4>
               </div>
+              <div class="card-body">
+                <form action="<?= site_url('User/check_room')?>" method="post">
+                  <div class="form-group">
+                  <input type="hidden"  name="category_id" class="form-control" value="<?php echo $data['category_id'];?>">
+                  </div>
+                  <div class="form-group">
+                  <label class="form-control-label">Choose Date From:</label>
+                  <input type="datetime-local"  name="datetime_from" required class="form-control">
+                  </div>
+                  <div class="form-group">
+                  <label class="form-control-label">Choose Date To:</label>
+                  <input type="datetime-local" name="datetime_to" required class="form-control">
+                  </div>
+                  <div class="form-group">
+
+                  <input type="submit" name="save" value="Check Available Rooms" class="btn btn-outline-primary btn-block" style="border-radius: 30px; font-size: 16px; padding: 10px;">
+                  </div>
+
+
+                </form>
+              </div>
+              </div>
+        </div>
+      </div>
+        
     </section> <!-- .section -->

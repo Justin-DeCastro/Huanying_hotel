@@ -25,12 +25,17 @@ class Admin extends Controller {
 	public function index() {
 		$this->template('Admin/dashboard');
 	}
+	public function show_bookings() {
+		 $this->call->model('Admin/Booking_model');
+		$data = $this->Booking_model->get_all_bookings();
+		$this->template('Admin/bookings',$data);
+	}
 	public function room_category() {
 		 $this->call->model('Admin/Room_category_model');
 		$data = $this->Room_category_model->get_rooms();
 		$this->template('Admin/room_category',$data);
 	}
-	public function add_room_category(){
+		public function add_room_category(){
 		$category_name = $this->io->post('category_name');
 		$availability = $this->io->post('availability');
 		$description = $this->io->post('description');
@@ -76,6 +81,18 @@ class Admin extends Controller {
 
 
 		redirect('Admin/room_category');
+	}
+	public function delete_bookings($booking_id){
+		$this->call->model('Admin/Booking_model');
+		 if($this->Booking_model->delete_booking($booking_id)){
+            $_SESSION['status']="Deleted Successfully";
+				$_SESSION['status_code']="success";
+        }else{
+            $_SESSION['status']="Student ID is required";
+			$_SESSION['status_code']="error";
+		}
+		redirect('Admin/show_bookings');
+
 	}
 	public function delete_category($category_id){
 		$this->call->model('Admin/Room_category_model');
@@ -235,6 +252,15 @@ class Admin extends Controller {
 
 
 		redirect('Admin/show_staff');
+	}
+	public function check_room() {
+		$this->call->model('Admin/Booking_model');
+		$data[1] = $this->Booking_model->check_bookings('2023-01-01 07:00:00','2023-01-31 07:00:00');
+		$this->call->model('Admin/Room_category_model');
+		$data[2] = $this->Room_category_model->get_allrooms();
+		$this->template('Admin/available_rooms',$data);
+
+		
 	}
 
 }

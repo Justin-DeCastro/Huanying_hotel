@@ -44,6 +44,11 @@ class Login extends Controller {
         $this->call->view('login');
 	}
     /*-----------Logout---------*/
+    public function admin_logout(){
+        $this->session->sess_destroy();
+        redirect ('Login');
+    }
+    /*-----------Logout---------*/
     public function logout(){
         $this->session->sess_destroy();
         redirect ('user');
