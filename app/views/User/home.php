@@ -196,7 +196,6 @@ We have contemporary designed air-conditioned rooms with luxurious beddings and 
 Our hotel also has a 24/7 standby generator should there be a power outage in the area.  No brownouts!
 
 At Huanying Hotel, we welcome you with comfort and style!</p>
-	          <p><a href="" class="btn btn-secondary rounded" data-toggle="modal" data-target="#exampleModalLong" >Reserve Your Room Now</a></p>
 					</div>
 				</div>
 			</div>
@@ -276,32 +275,21 @@ At Huanying Hotel, we welcome you with comfort and style!</p>
           </div>
         </div>  
     		<div class="row no-gutters">
+    			<?php foreach ($data as $room) {?>
     			<div class="col-lg-6">
     				<div class="room-wrap d-md-flex ftco-animate">
-    					<a href="#" class="img" style="background-image: url(<?php echo BASE_URL . PUBLIC_DIR; ?>/images/5.jpg);"></a>
+    					<a href="#" class="img" style="background-image: url('<?php echo BASE_URL?>/Files/room_category/<?php echo $room['image']?>')"></a>
     					<div class="half left-arrow d-flex align-items-center">
     						<div class="text p-4 text-center">
     							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-    							<p class="mb-0"><span class="price mr-1">Php 1800.00</span> <span class="per">per night</span></p>
-	    						<h3 class="mb-3"><a href="rooms.html">Deluxe Twin</a></h3>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
+    							<p class="mb-0"><span class="price mr-1">Php <?php echo $room['price']; ?></span> <span class="per">per day</span></p>
+	    						<h3 class="mb-3"><a href="rooms.html"><?php echo $room['category_name'];?></a></h3>
+	    						<p class="pt-1"><a href="<?php echo site_url('User/room_details/'.$room['category_id'])?>" class="btn-custom px-3 py-2 rounded">Book Now <span class="icon-long-arrow-right"></span></a></p>
     						</div>
     					</div>
     				</div>
     			</div>
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex ftco-animate">
-    					<a href="#" class="img" style="background-image: url(<?php echo BASE_URL . PUBLIC_DIR; ?>/images/8.jpg);"></a>
-    					<div class="half left-arrow d-flex align-items-center">
-    						<div class="text p-4 text-center">
-    							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-    							<p class="mb-0"><span class="price mr-1">Php1600.00</span> <span class="per">per night</span></p>
-	    						<h3 class="mb-3"><a href="rooms.html">Deluxe Queen</a></h3>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
+    			<?php } ?>
 
     			
 
